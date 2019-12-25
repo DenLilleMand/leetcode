@@ -59,8 +59,23 @@ func rm_dup_using_const_space(sortedArr []int) int {
 	return r
 }
 
+// Accepted implementation
+func rm_dup_using_const_space_optimized(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		if nums[i] != nums[j] {
+			i++
+			nums[i] = nums[j]
+		}
+	}
+	return i + 1
+}
+
 func main() {
 	sortedArr := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-	r3 := rm_dup_using_const_space(sortedArr)
+	r3 := rm_dup_using_const_space_optimized(sortedArr)
 	fmt.Printf("len:%+v,arr:%+v\n", r3, sortedArr)
 }
